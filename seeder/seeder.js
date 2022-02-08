@@ -14,7 +14,6 @@ mongoose.connect("mongodb://localhost:27017/ApiCourse", {
 });
 //read the json file
 const data = JSON.parse(fs.readFileSync(`./data.json`, 'utf-8'));
-const authors=JSON.parse(fs.readFileSync(`./authors.json`, 'utf-8'));
 //import the data to the database
 const importData = async () => {
     try {
@@ -25,15 +24,7 @@ const importData = async () => {
         console.error(err);
     }
 }
-const importAuthors = async () => {
-    try {
-        await Authors.create(authors);
-        console.log("Data Imported");
-        process.exit();
-    } catch (err) {
-        console.error(err);
-    }
-}
+
 //delete the data
 const deleteData = async () => {
     try {
@@ -62,7 +53,4 @@ if (process.argv[2] === 'delete') {
 }
 if (process.argv[2] === 'check') {
     checkData();
-}
-if (process.argv[2] === 'ia') {
-    importAuthors();
 }
