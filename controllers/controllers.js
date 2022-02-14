@@ -31,7 +31,7 @@ exports.getBootcamps = async (req, res) => {
     
     res.status(200).json({
         success: true, data: boot,
-        // pagination: pagination,
+         pagination: pagination,
        count:boot.length
     });
    
@@ -211,3 +211,4 @@ exports.getMe = async (req, res) => {
     const user = await USER.findById(req.user.id);
     res.status(200).json({ success: true, data: user });
 }
+
